@@ -40,13 +40,6 @@ namespace P3AddNewFunctionalityDotNetCore.Controllers
         [HttpPost]
         public IActionResult Create(ProductViewModel product)
         {
-            List<string> modelErrors = _productService.CheckProductModelErrors(product);           
-
-            foreach (string error in modelErrors)
-            {
-                ModelState.AddModelError("", error);
-            }
-
             if (ModelState.IsValid)
             {
                 _productService.SaveProduct(product);
@@ -57,6 +50,7 @@ namespace P3AddNewFunctionalityDotNetCore.Controllers
                 return View(product);
             }
         }
+
 
         [Authorize]
         [HttpPost]
