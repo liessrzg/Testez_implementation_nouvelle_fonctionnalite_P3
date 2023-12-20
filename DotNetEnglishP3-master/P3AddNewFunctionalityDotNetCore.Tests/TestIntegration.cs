@@ -45,7 +45,7 @@ namespace P3AddNewFunctionalityDotNetCore.Tests
                 ProductService productService = new(cart, productRepository, orderRepository, _localizer);
                 ProductController productController = new(productService, languageService);
 
-                ProductViewModel productViewModel = new() { Name = "Product from CREATE integration test", Description = "Description", Details = "Detail", Stock = 1, Price = 150 };
+                ProductViewModel productViewModel = new() { Name = "Product from CREATE integration test", Description = "Description", Details = "Detail", Stock = "1", Price = "150 "};
 
                 int count = await ctx.Product.CountAsync();
 
@@ -84,7 +84,7 @@ namespace P3AddNewFunctionalityDotNetCore.Tests
                 ProductService productService = new(cart, productRepository, orderRepository, _localizer);
                 ProductController productController = new(productService, languageService);
 
-                ProductViewModel productViewModel = new() { Name = "Product from DELETE integration test", Description = "Description", Details = "Detail", Stock = 1, Price = 150 };
+                ProductViewModel productViewModel = new() { Name = "Product from DELETE integration test", Description = "Description", Details = "Detail", Stock = "1", Price = "150" };
 
                 int count = await ctx.Product.CountAsync();
 

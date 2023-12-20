@@ -29,7 +29,7 @@ namespace P3AddNewFunctionalityDotNetCore.Tests
             public void TestMissingPrice()
             {
                 product.Name = "Test Product";
-                product.Stock = 1;
+                product.Stock = "1";
                 product.Price = null;
                 Assert.False(ValidateModel(product));
                 Assert.Equal("MissingPrice", GetFirstErrorMessage(product));
@@ -39,8 +39,8 @@ namespace P3AddNewFunctionalityDotNetCore.Tests
             public void TestMissingName()
             {
                 product.Name = null;
-                product.Price = 10.0;
-                product.Stock = 1;
+                product.Price = "10.0";
+                product.Stock = "1";
                 Assert.False(ValidateModel(product));
                 Assert.Equal("MissingName", GetFirstErrorMessage(product));
             }
@@ -49,8 +49,8 @@ namespace P3AddNewFunctionalityDotNetCore.Tests
             public void TestPriceNotANumber()
             {
                 product.Name = "Test Product";
-                product.Price = double.NaN;// Not a Number
-                product.Stock = 1;
+                product.Price = "j";// Not a Number
+                product.Stock = "3";
                 Assert.False(ValidateModel(product));
                 Assert.Equal("PriceNotANumber", GetFirstErrorMessage(product));
             }
@@ -59,8 +59,8 @@ namespace P3AddNewFunctionalityDotNetCore.Tests
             public void TestPriceNotGreaterThanZero()
             {
                 product.Name = "Test Product";
-                product.Price = 0.0;
-                product.Stock = 1;
+                product.Price = "0.0";
+                product.Stock = "1";
                 Assert.False(ValidateModel(product));
                 Assert.Equal("PriceNotGreaterThanZero", GetFirstErrorMessage(product));
             }
@@ -71,8 +71,8 @@ namespace P3AddNewFunctionalityDotNetCore.Tests
             public void TestQuantityNotGreaterThanZero()
             {
                 product.Name = "Test Product";
-                product.Price = 10.0;
-                product.Stock = 0;
+                product.Price =" 10.0";
+                product.Stock = "0";
                 Assert.False(ValidateModel(product));
                 Assert.Equal("QuantityNotGreaterThanZero", GetFirstErrorMessage(product));
             }
