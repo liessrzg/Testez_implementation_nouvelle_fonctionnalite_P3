@@ -6,7 +6,7 @@ namespace P3AddNewFunctionalityDotNetCore.Models.ViewModels
 {
     public class ProductViewModel
     {
-        public class IsNumberAttribute : ValidationAttribute
+        /*public class IsNumberAttribute : ValidationAttribute
         {
             protected override ValidationResult IsValid(object value, ValidationContext validationContext)
             {
@@ -17,7 +17,7 @@ namespace P3AddNewFunctionalityDotNetCore.Models.ViewModels
 
                 return ValidationResult.Success;
             }
-        }
+        }*/
 
 
         [BindNever]
@@ -30,12 +30,13 @@ namespace P3AddNewFunctionalityDotNetCore.Models.ViewModels
 
         public string Details { get; set; }
             
-        [Required(ErrorMessage = "MissingQuantity")]
+        [Required(ErrorMessage = "MissingStock")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "StockNotAnInteger")]
         [Range(1, int.MaxValue, ErrorMessage = "QuantityNotGreaterThanZero")]
         public string Stock { get; set; }
 
         [Required(ErrorMessage = "MissingPrice")]
-        [IsNumber(ErrorMessage = "PriceNotANumber")]
+        [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "PriceNotANumber")]
         [Range(0.01, double.MaxValue, ErrorMessage = "PriceNotGreaterThanZero")]
         public string Price { get; set; }
     }
